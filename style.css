@@ -1,0 +1,510 @@
+:root {
+  --p-orange: rgb(255, 154, 50);
+  --p-violet: rgb(65, 30, 100);
+}
+
+.custom-text {
+  font-size: 3.5rem;
+  /* default for large screens */
+  line-height: 3.9rem;
+}
+
+/* For tablets and smaller */
+@media (max-width: 992px) {
+  .custom-text {
+    font-size: 2.5rem;
+    line-height: 3rem;
+  }
+}
+
+/* For mobile */
+@media (max-width: 576px) {
+  .custom-text {
+    font-size: 2rem;
+    line-height: 3rem;
+  }
+}
+
+.hidden {
+  opacity: 0;
+  transform: translateY(150px);
+}
+
+@keyframes fadeInBottom {
+  0% {
+    opacity: 0.5;
+    transform: translateY(150px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-bottom.show {
+  animation: fadeInBottom 1s ease-out forwards;
+}
+
+
+
+
+.textstyle {
+  color: var(--p-violet);
+  font-family: 'Playfair Display';
+}
+
+.textstylePara {
+  color: var(--p-orange);
+  font-family: 'Playfair Display';
+}
+
+.genomethin {
+  font-family: "Genome Thin" !important;
+}
+
+.textstyle2 {
+  color: var(--p-violet);
+  font-family: 'Genome Thin' !important;
+  font-weight: 600;
+  font-size: 1rem !important;
+  margin-bottom: -4% !important;
+
+
+}
+
+/* Mobile Menu Fullscreen */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--p-orange);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  opacity: 0;
+  visibility: hidden;
+  /* keep element in DOM but invisible */
+  pointer-events: none;
+  transition: opacity 0.3s linear, visibility 0s linear;
+  /* fade starts instantly */
+  z-index: 1050;
+}
+
+.hamburgerBtn {
+  position: relative;
+  /* or absolute if needed */
+  z-index: 1100;
+  /* higher than .mobile-menu */
+}
+
+/* Show menu */
+.mobile-menu.show {
+  opacity: 1;
+  visibility: visible;
+  /* instantly visible */
+  pointer-events: auto;
+}
+
+.mobile-menu.hidden {
+  opacity: 0;
+  visibility: hidden;
+  /* instantly visible */
+  pointer-events: auto;
+}
+
+
+
+.ohm-background {
+  background-image: url("images/84770f_8e7dbb2ffae848f09bc845547952d66b~mv2_d_6206_3616_s_4_2.png");
+  background-position: center;
+  /* centers the focal point */
+  background-repeat: no-repeat;
+  min-height: 75vh;
+  /* makes it take full viewport height */
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ohm-background .container {
+  position: relative;
+  /* ensures text sits above overlay */
+  z-index: 1;
+}
+
+/* Menu links */
+.mobile-menu .nav-link {
+  color: #fff;
+  font-size: 1.5rem;
+  margin: 1rem 0;
+  text-align: center;
+  text-decoration: none;
+  transition: transform 0.1s ease;
+}
+
+.mobile-menu .nav-link:hover {
+  transform: scale(1.1);
+}
+
+
+
+a {
+  color: var(--p-violet) !important;
+  font-family: 'Playfair Display' !important;
+  font-size: 2rem !important;
+}
+
+.textstyle2H:hover {
+  color: rgb(247, 246, 248) !important;
+  cursor: pointer;
+  transition: 0.3s;
+  transform: scale(1.1);
+}
+
+body {
+  background-color: rgb(247 244 231) !important;
+
+}
+
+.p-background {
+  background-color: var(--p-orange) !important;
+}
+
+
+#menu-btn {
+  width: 40px;
+  overflow: hidden;
+}
+
+#menu-checkbox {
+  display: none;
+}
+
+#menu-label {
+  position: relative;
+  display: block;
+  height: 29px;
+  cursor: pointer;
+}
+
+#menu-label:before,
+#menu-label:after,
+#menu-bar {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background-color: var(--p-violet);
+  border-radius: 5px;
+}
+
+#menu-label:before,
+#menu-label:after {
+  content: "";
+  transition: 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55) left;
+}
+
+#menu-label:before {
+  top: 0;
+}
+
+#menu-label:after {
+  top: 12px;
+}
+
+#menu-bar {
+  top: 24px;
+}
+
+#menu-bar:before {
+  content: "Menu";
+  position: absolute;
+  top: 5px;
+  right: 0;
+  left: 0;
+  color: #fff;
+  font-size: 15px;
+  font-weight: bold;
+  font-family: "Genome Thin", sans-serif;
+  text-align: center;
+}
+
+#menu-checkbox:checked+#menu-label:before {
+  left: -40px;
+}
+
+#menu-checkbox:checked+#menu-label:after {
+  left: 40px;
+}
+
+#menu-checkbox:checked+#menu-label #menu-bar:before {
+  animation: moveUpThenDown 0.8s ease 0.2s forwards,
+    shakeWhileMovingUp 0.8s ease 0.2s forwards,
+    shakeWhileMovingDown 0.2s ease 0.8s forwards;
+}
+
+@keyframes moveUpThenDown {
+  0% {
+    top: 0;
+  }
+
+  50% {
+    top: -27px;
+  }
+
+  100% {
+    top: -14px;
+  }
+}
+
+@keyframes shakeWhileMovingUp {
+  0% {
+    transform: rotateZ(0);
+  }
+
+  25% {
+    transform: rotateZ(-10deg);
+  }
+
+  50% {
+    transform: rotateZ(0deg);
+  }
+
+  75% {
+    transform: rotateZ(10deg);
+  }
+
+  100% {
+    transform: rotateZ(0);
+  }
+}
+
+@keyframes shakeWhileMovingDown {
+  0% {
+    transform: rotateZ(0);
+  }
+
+  80% {
+    transform: rotateZ(3deg);
+  }
+
+  90% {
+    transform: rotateZ(-3deg);
+  }
+
+  100% {
+    transform: rotateZ(0);
+  }
+}
+
+@media (max-width: 767px) {
+  .classesProvided {
+    padding-inline: 0px !important;
+    /* smaller padding on mobile */
+  }
+}
+
+
+.classesCard {
+  opacity: 0;
+  transform: translateY(0);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.classesCard:nth-child(2) {
+  transition-delay: 0.3s;
+  /* 0.3s delay for second element */
+}
+
+.classesCard.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.classesCard2 {
+  opacity: 0;
+  transform: translateY(0);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.classesCard2.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.mission-Background {
+  background-color: var(--p-violet) !important;
+}
+
+.glass-card {
+  /* From https://css.glass */
+  /* From https://css.glass */
+  background: rgba(255, 110, 6, 0.21) !important;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1) !important;
+  backdrop-filter: blur(7.9px) !important;
+  -webkit-backdrop-filter: blur(7.9px) !important;
+  border: 1px solid rgba(255, 110, 6, 0.46) !important;
+  ;
+
+}
+
+
+
+.carousel-control-prev-icon {
+  filter: invert(1) !important;
+}
+
+.carousel-control-next-icon {
+  filter: invert(1) !important;
+}
+
+.myFab {
+  position: fixed;
+  /* stays in place when scrolling */
+  top: 20px;
+  /* distance from bottom */
+  right: 0px;
+  /* distance from right */
+  z-index: 1000;
+  /* makes sure it stays above other elements */
+}
+
+/* From Uiverse.io by Creatlydev */ 
+.button {
+  line-height: 1;
+  text-decoration: none;
+  display: inline-flex;
+  border: none;
+  cursor: pointer;
+  align-items: center;
+  gap: 0.75rem;
+  background-color: var(--p-violet);
+  color: #fff;
+  border-radius: 10rem 0rem 0rem 10rem;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  padding-left: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: background-color 0.3s;
+}
+
+.button__icon-wrapper {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  position: relative;
+  color: var(--clr);
+  background-color: #fff;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.button:hover {
+  background-color: var(--p-orange);
+}
+
+.button:hover .button__icon-wrapper {
+  color: var(--p-orange);
+}
+
+.button__icon-svg--copy {
+  position: absolute;
+  transform: translate(-179%, 179%);
+}
+
+.button:hover .button__icon-svg:first-child {
+  transition: transform 0.3s ease-in-out;
+  transform: translate(169%, -169%);
+}
+
+.button:hover .button__icon-svg--copy {
+  transition: transform 0.3s ease-in-out 0.1s;
+  transform: translate(0);
+}
+
+.detailsClass:hover{
+  color: var(--p-orange);
+  transform: scale(1.2);
+}
+
+.formDesign{
+  color: var(--p-violet) !important;
+}
+
+.inputField{
+  background: #ffffff00 ;
+  border-width: 0rem 0rem 1px 0rem;
+  width: 100% !important;       /* makes it take the full width of the column */
+  box-sizing: border-box; 
+  color:var(--p-violet) !important;
+  font-weight: bolder;
+  border-color: var(--p-violet);
+}
+
+.inputField:focus{
+  outline:none !important;
+}
+
+.iti {
+    width: 100% !important; /* or specific px like 400px */
+}
+
+/* Optional: make the input inside fill the wrapper */
+.iti input {
+    width: 100% !important;
+}
+
+.iti__country-list {
+           /* adjust height */
+    font-family: 'Avenir', sans-serif; /* change font */
+    width: 15rem !important;        /* default text size */
+}
+
+.submitButtonDesign{
+  width: 100% !important;
+  border: none !important;
+  background-color: var(--p-violet);
+  color: white !important;
+  height: 3rem;
+}
+
+.submitButtonDesign:hover{
+  background-color: var(--p-orange);
+}
+textarea{
+  border-color: var(--p-violet) !important;
+}
+
+.animated-hr {
+  width: 0;
+  height: 0.5rem !important;
+  border: none;
+  background: linear-gradient(90deg, #400d68, #801243);
+  transition: width 1s ease-out;
+  border-radius: 0.2rem !important;
+}
+
+.animated-hr.show {
+  width: 100%;
+}
+
+.noLinkStyle {
+  all: unset !important; /* removes all inherited styles */
+  cursor: default; /* optional: make it non-clickable */
+}
+#mission, #events, #donation, #classes {
+  scroll-margin-top: 10rem !important; /* height of your fixed header */
+}
+
+
+
